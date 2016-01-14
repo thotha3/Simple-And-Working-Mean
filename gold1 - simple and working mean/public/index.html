@@ -1,0 +1,38 @@
+<html ng-app="demo">
+<head>
+    <title>Sample App</title>
+
+    <!-- Add JQuery + Bootstrap JS / CSS + AngularJS-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-route.min.js"></script>
+    <script src="./main.js"></script>
+</head>
+<body ng-controller="MainController">
+   <div class="container">
+       <h1>List</h1>
+       <div class="row">
+           <div ng-repeat="item in vm.list track by item._id" style="padding:10px">
+              <button class="btn btn-danger" ng-click="vm.removeItem(item)">X</button>
+               {{item.details}}
+           </div>
+       </div>
+       <div class="row">
+           <form role="form">
+               <div class="form-group">
+                   <label for="newItemDetails">New Item Details:</label>
+                   <input type="text" class="form-control" id="newItemDetails"
+                          placeholder="Details of new todo item"
+                          ng-model="vm.newItemDetails">
+               </div>
+               <button type="submit" class="btn btn-primary"
+                       ng-click="vm.addItem()"
+                       ng-disabled="!vm.newItemDetails">Add</button>
+           </form>
+
+       </div>
+   </div>
+</body>
+</html>
